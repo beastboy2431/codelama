@@ -37,3 +37,4 @@ codellama-13b-instruct.Q2_K.gguf filter=lfs diff=lfs merge=lfs -text
 codellama-13b-instruct.Q3_K_S.gguf filter=lfs diff=lfs merge=lfs -text
 codellama-13b-instruct.Q3_K_M.gguf filter=lfs diff=lfs merge=lfs -text
 codellama-13b-instruct.Q3_K_L.gguf filter=lfs diff=lfs merge=lfs -text
+codellama-13b-instruct.Q4_K_S.gguf filter=lfs diff=lfs merge=lfs -text
