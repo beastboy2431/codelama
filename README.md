@@ -131,7 +131,7 @@ Change `-t 10` to the number of physical CPU cores you have. For example if your
 
 Change `-ngl 32` to the number of layers to offload to GPU. Remove it if you don't have GPU acceleration.
 
-Change `-c 4096` to the desired sequence length for this model. For extended sequence models - eg 8K, 16K, 32K - the necessary RoPE scaling parameters should be set by llama.cpp automatically.  If they are not, or if you need to change them manually, you can use `--rope-freq-base 10000 --rope-freq-scale 0.5` for doubled context, or `--rope-freq-base 10000 --rope-freq-scale 0.25` for 4x context.
+Change `-c 4096` to the desired sequence length for this model. For extended sequence models - eg 8K, 16K, 32K - the necessary RoPE scaling parameters should be set by llama.cpp automatically. 
 
 If you want to have a chat-style conversation, replace the `-p <PROMPT>` argument with `-i -ins`
 
