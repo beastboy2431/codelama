@@ -43,16 +43,14 @@ GGUF is a new format introduced by the llama.cpp team on August 21st 2023. It is
 
 The key benefit of GGUF is that it is a extensible, future-proof format which stores more information about the model as metadata. It also includes significantly improved tokenization code, including for the first time full support for special tokens. This should improve performance, especially with models that use new special tokens and implement custom prompt templates.
 
-As of August 24th 2023, llama.cpp and KoboldCpp support GGUF. Other third-party clients and libraries are expected to add support very soon.
-
-Here is a list of clients and libraries that are known to support GGUF:
+As of August 25th, here is a list of clients and libraries that are known to support GGUF:
 * [llama.cpp](https://github.com/ggerganov/llama.cpp)
 * [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41! A powerful GGML web UI, with full GPU accel. Especially good for story telling.
 * [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), should now work, choose the `c_transformers` backend. A great web UI with many interesting features. Supports CUDA GPU acceleration.
 * [ctransformers](https://github.com/marella/ctransformers), now supports GGUF as of version 0.2.24! A Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
 * [candle](https://github.com/huggingface/candle), added GGUF support on August 22nd. Candle is a Rust ML framework with a focus on performance, including GPU support, and ease of use.
 
-Here is a list of clients and libraries, along with their expected timeline for GGUF support. Where possible a link to the relevant issue or PR is provided:
+The clients and libraries below are expecting to add GGUF support. Where possible a link to the relevant issue or PR is provided:
 * [text-generation-webui](https://github.com/oobabooga/text-generation-webui), awaiting llama-cpp-python support.
 * [LM Studio](https://lmstudio.ai/), in active development - hoped to be ready by August 25th-26th.
 * [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), [in active development](https://github.com/abetlen/llama-cpp-python/issues/628).
