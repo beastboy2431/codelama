@@ -47,13 +47,14 @@ As of August 24th 2023, llama.cpp and KoboldCpp support GGUF. Other third-party 
 
 Here is a list of clients and libraries that are known to support GGUF:
 * [llama.cpp](https://github.com/ggerganov/llama.cpp)
-* [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41!
+* [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41! A powerful GGML web UI, with full GPU accel. Especially good for story telling.
+* [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), should now work, choose the `c_transformers` backend. A great web UI with many interesting features. Supports CUDA GPU acceleration.
+* [ctransformers](https://github.com/marella/ctransformers), now supports GGUF as of version 0.2.24! A Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
+* [candle](https://github.com/huggingface/candle), added GGUF support on August 22nd. Candle is a Rust ML framework with a focus on performance, including GPU support, and ease of use.
 
 Here is a list of clients and libraries, along with their expected timeline for GGUF support. Where possible a link to the relevant issue or PR is provided:
 * [text-generation-webui](https://github.com/oobabooga/text-generation-webui), awaiting llama-cpp-python support.
 * [LM Studio](https://lmstudio.ai/), in active development - hoped to be ready by August 25th-26th.
-* [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), will work as soon as ctransformers or llama-cpp-python is updated.
-* [ctransformers](https://github.com/marella/ctransformers), [development will start soon](https://github.com/marella/ctransformers/issues/102).
 * [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), [in active development](https://github.com/abetlen/llama-cpp-python/issues/628).
 <!-- README_GGUF.md-about-gguf end -->
 
@@ -125,13 +126,13 @@ Make sure you are using `llama.cpp` from commit [6381d4e110bd0ec02843a60bbeb8b6f
 For compatibility with older versions of llama.cpp, or for use with third-party clients and libaries, please use GGML files instead.
 
 ```
-./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 2048 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "### Instruction: Write a story about llamas\n### Response:"
+./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 4096 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "### Instruction: Write a story about llamas\n### Response:"
 ```
 Change `-t 10` to the number of physical CPU cores you have. For example if your system has 8 cores/16 threads, use `-t 8`.
 
 Change `-ngl 32` to the number of layers to offload to GPU. Remove it if you don't have GPU acceleration.
 
-Change `-c 4096` to the desired sequence length for this model. For extended sequence models - eg 8K, 16K, 32K - the necessary RoPE scaling parameters should be set by llama.cpp automatically. 
+Change `-c 4096` to the desired sequence length for this model. For extended sequence models - eg 8K, 16K, 32K - the necessary RoPE scaling parameters are read from the GGUF file and set by llama.cpp automatically.
 
 If you want to have a chat-style conversation, replace the `-p <PROMPT>` argument with `-i -ins`
 
