@@ -68,10 +68,12 @@ The clients and libraries below are expecting to add GGUF support shortly:
 <!-- repositories-available end -->
 
 <!-- prompt-template start -->
-## Prompt template: TBC
+## Prompt template: CodeLlama
 
 ```
-Info on prompt template will be added shortly.
+[INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:
+{prompt}
+[/INST]
 ```
 
 <!-- prompt-template end -->
