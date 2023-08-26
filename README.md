@@ -45,15 +45,15 @@ The key benefit of GGUF is that it is a extensible, future-proof format which st
 
 As of August 25th, here is a list of clients and libraries that are known to support GGUF:
 * [llama.cpp](https://github.com/ggerganov/llama.cpp)
+* [text-generation-webui](https://github.com/oobabooga/text-generation-webui), the most widely used web UI. Supports GGUF with GPU acceleration via the ctransformers backend - llama-cpp-python backend should work soon too.
 * [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41! A powerful GGML web UI, with full GPU accel. Especially good for story telling.
 * [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), should now work, choose the `c_transformers` backend. A great web UI with many interesting features. Supports CUDA GPU acceleration.
 * [ctransformers](https://github.com/marella/ctransformers), now supports GGUF as of version 0.2.24! A Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
+* [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), supports GGUF as of version 0.1.79. A Python library with GPU accel, LangChain support, and OpenAI-compatible API server.
 * [candle](https://github.com/huggingface/candle), added GGUF support on August 22nd. Candle is a Rust ML framework with a focus on performance, including GPU support, and ease of use.
 
-The clients and libraries below are expecting to add GGUF support. Where possible a link to the relevant issue or PR is provided:
-* [text-generation-webui](https://github.com/oobabooga/text-generation-webui), awaiting llama-cpp-python support.
-* [LM Studio](https://lmstudio.ai/), in active development - hoped to be ready by August 25th-26th.
-* [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), [in active development](https://github.com/abetlen/llama-cpp-python/issues/628).
+The clients and libraries below are expecting to add GGUF support shortly:
+* [LM Studio](https://lmstudio.ai/), should be updated by end August 25th.
 <!-- README_GGUF.md-about-gguf end -->
 
 <!-- repositories-available start -->
@@ -66,10 +66,12 @@ The clients and libraries below are expecting to add GGUF support. Where possibl
 <!-- repositories-available end -->
 
 <!-- prompt-template start -->
-## Prompt template: TBC
+## Prompt template: CodeLlama
 
 ```
-Info on prompt template will be added shortly.
+[INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:
+{prompt}
+[/INST]
 ```
 
 <!-- prompt-template end -->
@@ -164,7 +166,7 @@ Donaters will get priority support on any and all AI/LLM/model questions and req
 
 **Special thanks to**: Aemon Algiz.
 
-**Patreon special mentions**: Sam, theTransient, Jonathan Leane, Steven Wood, webtim, Johann-Peter Hartmann, Geoffrey Montalvo, Gabriel Tamborski, Willem Michiel, John Villwock, Derek Yates, Mesiah Bishop, Eugene Pentland, Pieter, Chadd, Stephen Murray, Daniel P. Andersen, terasurfer, Brandon Frisco, Thomas Belote, Sid, Nathan LeClaire, Magnesian, Alps Aficionado, Stanislav Ovsiannikov, Alex, Joseph William Delisle, Nikolai Manek, Michael Davis, Junyu Yang, K, J, Spencer Kim, Stefan Sabev, Olusegun Samson, transmissions 11, Michael Levine, Cory Kujawski, Rainer Wilmers, zynix, Kalila, Luke @flexchar, Ajan Kanaga, Mandus, vamX, Ai Maven, Mano Prime, Matthew Berman, subjectnull, Vitor Caleffi, Clay Pascal, biorpg, alfie_i, 阿明, Jeffrey Morgan, ya boyyy, Raymond Fosdick, knownsqashed, Olakabola, Leonard Tan, ReadyPlayerEmma, Enrico Ros, Dave, Talal Aujan, Illia Dulskyi, Sean Connelly, senxiiz, Artur Olbinski, Elle, Raven Klaugh, Fen Risland, Deep Realms, Imad Khwaja, Fred von Graf, Will Dee, usrbinkat, SuperWojo, Alexandros Triantafyllidis, Swaroop Kallakuri, Dan Guido, John Detwiler, Pedro Madruga, Iucharbius, Viktor Bowallius, Asp the Wyvern, Edmond Seymore, Trenton Dambrowitz, Space Cruiser, Spiking Neurons AB, Pyrater, LangChain4j, Tony Hughes, Kacper Wikieł, Rishabh Srivastava, David Ziegler, Luke Pendergrass, Andrey, Gabriel Puliatti, Lone Striker, Sebastain Graf, Pierre Kircher, Randy H, NimbleBox.ai, Vadim, danny, Deo Leter
+**Patreon special mentions**: Kacper Wikieł, knownsqashed, Leonard Tan, Asp the Wyvern, Daniel P. Andersen, Luke Pendergrass, Stanislav Ovsiannikov, RoA, Dave, Ai Maven, Kalila, Will Dee, Imad Khwaja, Nitin Borwankar, Joseph William Delisle, Tony Hughes, Cory Kujawski, Rishabh Srivastava, Russ Johnson, Stephen Murray, Lone Striker, Johann-Peter Hartmann, Elle, J, Deep Realms, SuperWojo, Raven Klaugh, Sebastain Graf, ReadyPlayerEmma, Alps Aficionado, Mano Prime, Derek Yates, Gabriel Puliatti, Mesiah Bishop, Magnesian, Sean Connelly, biorpg, Iucharbius, Olakabola, Fen Risland, Space Cruiser, theTransient, Illia Dulskyi, Thomas Belote, Spencer Kim, Pieter, John Detwiler, Fred von Graf, Michael Davis, Swaroop Kallakuri, subjectnull, Clay Pascal, Subspace Studios, Chris Smitley, Enrico Ros, usrbinkat, Steven Wood, alfie_i, David Ziegler, Willem Michiel, Matthew Berman, Andrey, Pyrater, Jeffrey Morgan, vamX, LangChain4j, Luke @flexchar, Trenton Dambrowitz, Pierre Kircher, Alex, Sam, James Bentley, Edmond Seymore, Eugene Pentland, Pedro Madruga, Rainer Wilmers, Dan Guido, Nathan LeClaire, Spiking Neurons AB, Talal Aujan, zynix, Artur Olbinski, Michael Levine, 阿明, K, John Villwock, Nikolai Manek, Femi Adebogun, senxiiz, Deo Leter, NimbleBox.ai, Viktor Bowallius, Geoffrey Montalvo, Mandus, Ajan Kanaga, ya boyyy, Jonathan Leane, webtim, Brandon Frisco, danny, Alexandros Triantafyllidis, Gabriel Tamborski, Randy H, terasurfer, Vadim, Junyu Yang, Vitor Caleffi, Chadd, transmissions 11
 
 
 Thank you to all my generous patrons and donaters!
