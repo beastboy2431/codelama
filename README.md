@@ -45,19 +45,17 @@ GGUF is a new format introduced by the llama.cpp team on August 21st 2023. It is
 
 The key benefit of GGUF is that it is a extensible, future-proof format which stores more information about the model as metadata. It also includes significantly improved tokenization code, including for the first time full support for special tokens. This should improve performance, especially with models that use new special tokens and implement custom prompt templates.
 
-As of August 25th, here is a list of clients and libraries that are known to support GGUF:
-* [llama.cpp](https://github.com/ggerganov/llama.cpp)
+Here are a list of clients and libraries that are known to support GGUF:
+* [llama.cpp](https://github.com/ggerganov/llama.cpp).
 * [text-generation-webui](https://github.com/oobabooga/text-generation-webui), the most widely used web UI. Supports GGUF with GPU acceleration via the ctransformers backend - llama-cpp-python backend should work soon too.
 * [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41! A powerful GGML web UI, with full GPU accel. Especially good for story telling.
+* [LM Studio](https://lmstudio.ai/), version 0.2.2 and later support GGUF. A fully featured local GUI with GPU acceleration on both Windows (NVidia and AMD), and macOS.
 * [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), should now work, choose the `c_transformers` backend. A great web UI with many interesting features. Supports CUDA GPU acceleration.
 * [ctransformers](https://github.com/marella/ctransformers), now supports GGUF as of version 0.2.24! A Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
 * [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), supports GGUF as of version 0.1.79. A Python library with GPU accel, LangChain support, and OpenAI-compatible API server.
 * [candle](https://github.com/huggingface/candle), added GGUF support on August 22nd. Candle is a Rust ML framework with a focus on performance, including GPU support, and ease of use.
 
-The clients and libraries below are expecting to add GGUF support shortly:
-* [LM Studio](https://lmstudio.ai/), should be updated by end August 25th.
 <!-- README_GGUF.md-about-gguf end -->
-
 <!-- repositories-available start -->
 ## Repositories available
 
@@ -74,6 +72,7 @@ The clients and libraries below are expecting to add GGUF support shortly:
 [INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:
 {prompt}
 [/INST]
+
 ```
 
 <!-- prompt-template end -->
@@ -82,9 +81,7 @@ The clients and libraries below are expecting to add GGUF support shortly:
 
 These quantised GGUF files are compatible with llama.cpp from August 21st 2023 onwards, as of commit [6381d4e110bd0ec02843a60bbeb8b6fc37a9ace9](https://github.com/ggerganov/llama.cpp/commit/6381d4e110bd0ec02843a60bbeb8b6fc37a9ace9)
 
-As of August 24th 2023 they are now compatible with KoboldCpp, release 1.41 and later.
-
-They are are not yet compatible with any other third-party UIS, libraries or utilities but this is expected to change very soon.
+They are now also compatible with many third party UIs and libraries - please see the list at the top of the README.
 
 ## Explanation of quantisation methods
 <details>
@@ -106,31 +103,36 @@ Refer to the Provided Files table below to see what files use which methods, and
 
 | Name | Quant method | Bits | Size | Max RAM required | Use case |
 | ---- | ---- | ---- | ---- | ---- | ----- |
-| [codellama-13b-instruct.Q2_K.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q2_K.gguf) | Q2_K | 2 | 5.66 GB| 8.16 GB | smallest, significant quality loss - not recommended for most purposes |
-| [codellama-13b-instruct.Q3_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_S.gguf) | Q3_K_S | 3 | 5.87 GB| 8.37 GB | very small, high quality loss |
-| [codellama-13b-instruct.Q3_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_M.gguf) | Q3_K_M | 3 | 6.55 GB| 9.05 GB | very small, high quality loss |
-| [codellama-13b-instruct.Q3_K_L.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_L.gguf) | Q3_K_L | 3 | 7.14 GB| 9.64 GB | small, substantial quality loss |
-| [codellama-13b-instruct.Q4_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q4_K_S.gguf) | Q4_K_S | 4 | 7.61 GB| 10.11 GB | small, greater quality loss |
-| [codellama-13b-instruct.Q4_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q4_K_M.gguf) | Q4_K_M | 4 | 8.06 GB| 10.56 GB | medium, balanced quality - recommended |
-| [codellama-13b-instruct.Q5_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q5_K_S.gguf) | Q5_K_S | 5 | 9.15 GB| 11.65 GB | large, low quality loss - recommended |
-| [codellama-13b-instruct.Q5_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q5_K_M.gguf) | Q5_K_M | 5 | 9.40 GB| 11.90 GB | large, very low quality loss - recommended |
-| [codellama-13b-instruct.Q6_K.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q6_K.gguf) | Q6_K | 6 | 10.83 GB| 13.33 GB | very large, extremely low quality loss |
+| [codellama-13b-instruct.Q2_K.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q2_K.gguf) | Q2_K | 2 | 5.43 GB| 7.93 GB | smallest, significant quality loss - not recommended for most purposes |
+| [codellama-13b-instruct.Q3_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_S.gguf) | Q3_K_S | 3 | 5.66 GB| 8.16 GB | very small, high quality loss |
+| [codellama-13b-instruct.Q3_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_M.gguf) | Q3_K_M | 3 | 6.34 GB| 8.84 GB | very small, high quality loss |
+| [codellama-13b-instruct.Q3_K_L.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q3_K_L.gguf) | Q3_K_L | 3 | 6.93 GB| 9.43 GB | small, substantial quality loss |
+| [codellama-13b-instruct.Q4_0.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q4_0.gguf) | Q4_0 | 4 | 7.37 GB| 9.87 GB | legacy; small, very high quality loss - prefer using Q3_K_M |
+| [codellama-13b-instruct.Q4_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q4_K_S.gguf) | Q4_K_S | 4 | 7.41 GB| 9.91 GB | small, greater quality loss |
+| [codellama-13b-instruct.Q4_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q4_K_M.gguf) | Q4_K_M | 4 | 7.87 GB| 10.37 GB | medium, balanced quality - recommended |
+| [codellama-13b-instruct.Q5_0.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q5_0.gguf) | Q5_0 | 5 | 8.97 GB| 11.47 GB | legacy; medium, balanced quality - prefer using Q4_K_M |
+| [codellama-13b-instruct.Q5_K_S.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q5_K_S.gguf) | Q5_K_S | 5 | 8.97 GB| 11.47 GB | large, low quality loss - recommended |
+| [codellama-13b-instruct.Q5_K_M.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q5_K_M.gguf) | Q5_K_M | 5 | 9.23 GB| 11.73 GB | large, very low quality loss - recommended |
+| [codellama-13b-instruct.Q6_K.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q6_K.gguf) | Q6_K | 6 | 10.68 GB| 13.18 GB | very large, extremely low quality loss |
 | [codellama-13b-instruct.Q8_0.gguf](https://huggingface.co/TheBloke/CodeLlama-13B-Instruct-GGUF/blob/main/codellama-13b-instruct.Q8_0.gguf) | Q8_0 | 8 | 13.83 GB| 16.33 GB | very large, extremely low quality loss - not recommended |
 
 **Note**: the above RAM figures assume no GPU offloading. If layers are offloaded to the GPU, this will reduce RAM usage and use VRAM instead.
+
+
+
 <!-- README_GGUF.md-provided-files end -->
 
 <!-- README_GGUF.md-how-to-run start -->
-## How to run in `llama.cpp`
+## Example `llama.cpp` command
 
 Make sure you are using `llama.cpp` from commit [6381d4e110bd0ec02843a60bbeb8b6fc37a9ace9](https://github.com/ggerganov/llama.cpp/commit/6381d4e110bd0ec02843a60bbeb8b6fc37a9ace9) or later.
 
-For compatibility with older versions of llama.cpp, or for use with third-party clients and libaries, please use GGML files instead.
+For compatibility with older versions of llama.cpp, or for any third-party libraries or clients that haven't yet updated for GGUF, please use GGML files instead.
 
 ```
-./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 4096 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "### Instruction: Write a story about llamas\n### Response:"
+./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 4096 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "[INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:\nWrite a story about llamas\n[/INST]"
 ```
-Change `-t 10` to the number of physical CPU cores you have. For example if your system has 8 cores/16 threads, use `-t 8`.
+Change `-t 10` to the number of physical CPU cores you have. For example if your system has 8 cores/16 threads, use `-t 8`. If offloading all layers to GPU, set `-t 1`.
 
 Change `-ngl 32` to the number of layers to offload to GPU. Remove it if you don't have GPU acceleration.
 
@@ -143,6 +145,44 @@ For other parameters and how to use them, please refer to [the llama.cpp documen
 ## How to run in `text-generation-webui`
 
 Further instructions here: [text-generation-webui/docs/llama.cpp.md](https://github.com/oobabooga/text-generation-webui/blob/main/docs/llama.cpp.md).
+
+## How to run from Python code
+
+You can use GGUF models from Python using the [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) or [ctransformers](https://github.com/marella/ctransformers) libraries.
+
+### How to load this model from Python using ctransformers
+
+#### First install the package
+
+```bash
+# Base ctransformers with no GPU acceleration
+pip install ctransformers>=0.2.24
+# Or with CUDA GPU acceleration
+pip install ctransformers[cuda]>=0.2.24
+# Or with ROCm GPU acceleration
+CT_HIPBLAS=1 pip install ctransformers>=0.2.24 --no-binary ctransformers
+# Or with Metal GPU acceleration for macOS systems
+CT_METAL=1 pip install ctransformers>=0.2.24 --no-binary ctransformers
+```
+
+#### Simple example code to load one of these GGUF models
+
+```python
+from ctransformers import AutoModelForCausalLM
+
+# Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
+llm = AutoModelForCausalLM.from_pretrained("TheBloke/CodeLlama-13B-Instruct-GGML", model_file="codellama-13b-instruct.q4_K_M.gguf", model_type="llama", gpu_layers=50)
+
+print(llm("AI is going to"))
+```
+
+## How to use with LangChain
+
+Here's guides on using llama-cpp-python or ctransformers with LangChain:
+
+* [LangChain + llama-cpp-python](https://python.langchain.com/docs/integrations/llms/llamacpp)
+* [LangChain + ctransformers](https://python.langchain.com/docs/integrations/providers/ctransformers)
+
 <!-- README_GGUF.md-how-to-run end -->
 
 <!-- footer start -->
@@ -168,7 +208,7 @@ Donaters will get priority support on any and all AI/LLM/model questions and req
 
 **Special thanks to**: Aemon Algiz.
 
-**Patreon special mentions**: Kacper Wikieł, knownsqashed, Leonard Tan, Asp the Wyvern, Daniel P. Andersen, Luke Pendergrass, Stanislav Ovsiannikov, RoA, Dave, Ai Maven, Kalila, Will Dee, Imad Khwaja, Nitin Borwankar, Joseph William Delisle, Tony Hughes, Cory Kujawski, Rishabh Srivastava, Russ Johnson, Stephen Murray, Lone Striker, Johann-Peter Hartmann, Elle, J, Deep Realms, SuperWojo, Raven Klaugh, Sebastain Graf, ReadyPlayerEmma, Alps Aficionado, Mano Prime, Derek Yates, Gabriel Puliatti, Mesiah Bishop, Magnesian, Sean Connelly, biorpg, Iucharbius, Olakabola, Fen Risland, Space Cruiser, theTransient, Illia Dulskyi, Thomas Belote, Spencer Kim, Pieter, John Detwiler, Fred von Graf, Michael Davis, Swaroop Kallakuri, subjectnull, Clay Pascal, Subspace Studios, Chris Smitley, Enrico Ros, usrbinkat, Steven Wood, alfie_i, David Ziegler, Willem Michiel, Matthew Berman, Andrey, Pyrater, Jeffrey Morgan, vamX, LangChain4j, Luke @flexchar, Trenton Dambrowitz, Pierre Kircher, Alex, Sam, James Bentley, Edmond Seymore, Eugene Pentland, Pedro Madruga, Rainer Wilmers, Dan Guido, Nathan LeClaire, Spiking Neurons AB, Talal Aujan, zynix, Artur Olbinski, Michael Levine, 阿明, K, John Villwock, Nikolai Manek, Femi Adebogun, senxiiz, Deo Leter, NimbleBox.ai, Viktor Bowallius, Geoffrey Montalvo, Mandus, Ajan Kanaga, ya boyyy, Jonathan Leane, webtim, Brandon Frisco, danny, Alexandros Triantafyllidis, Gabriel Tamborski, Randy H, terasurfer, Vadim, Junyu Yang, Vitor Caleffi, Chadd, transmissions 11
+**Patreon special mentions**: Russ Johnson, J, alfie_i, Alex, NimbleBox.ai, Chadd, Mandus, Nikolai Manek, Ken Nordquist, ya boyyy, Illia Dulskyi, Viktor Bowallius, vamX, Iucharbius, zynix, Magnesian, Clay Pascal, Pierre Kircher, Enrico Ros, Tony Hughes, Elle, Andrey, knownsqashed, Deep Realms, Jerry Meng, Lone Striker, Derek Yates, Pyrater, Mesiah Bishop, James Bentley, Femi Adebogun, Brandon Frisco, SuperWojo, Alps Aficionado, Michael Dempsey, Vitor Caleffi, Will Dee, Edmond Seymore, usrbinkat, LangChain4j, Kacper Wikieł, Luke Pendergrass, John Detwiler, theTransient, Nathan LeClaire, Tiffany J. Kim, biorpg, Eugene Pentland, Stanislav Ovsiannikov, Fred von Graf, terasurfer, Kalila, Dan Guido, Nitin Borwankar, 阿明, Ai Maven, John Villwock, Gabriel Puliatti, Stephen Murray, Asp the Wyvern, danny, Chris Smitley, ReadyPlayerEmma, S_X, Daniel P. Andersen, Olakabola, Jeffrey Morgan, Imad Khwaja, Caitlyn Gatomon, webtim, Alicia Loh, Trenton Dambrowitz, Swaroop Kallakuri, Erik Bjäreholt, Leonard Tan, Spiking Neurons AB, Luke @flexchar, Ajan Kanaga, Thomas Belote, Deo Leter, RoA, Willem Michiel, transmissions 11, subjectnull, Matthew Berman, Joseph William Delisle, David Ziegler, Michael Davis, Johann-Peter Hartmann, Talal Aujan, senxiiz, Artur Olbinski, Rainer Wilmers, Spencer Kim, Fen Risland, Cap'n Zoog, Rishabh Srivastava, Michael Levine, Geoffrey Montalvo, Sean Connelly, Alexandros Triantafyllidis, Pieter, Gabriel Tamborski, Sam, Subspace Studios, Junyu Yang, Pedro Madruga, Vadim, Cory Kujawski, K, Raven Klaugh, Randy H, Mano Prime, Sebastain Graf, Space Cruiser
 
 
 Thank you to all my generous patrons and donaters!
@@ -231,7 +271,7 @@ All variants are available in sizes of 7B, 13B and 34B parameters.
 
 **License** A custom commercial license is available at: [https://ai.meta.com/resources/models-and-libraries/llama-downloads/](https://ai.meta.com/resources/models-and-libraries/llama-downloads/)
 
-**Research Paper** More information can be found in the paper "[Code Llama: Open Foundation Models for Code](https://ai.meta.com/research/publications/code-llama-open-foundation-models-for-code/)".
+**Research Paper** More information can be found in the paper "[Code Llama: Open Foundation Models for Code](https://ai.meta.com/research/publications/code-llama-open-foundation-models-for-code/)" or its [arXiv page](https://arxiv.org/abs/2308.12950).
 
 ## Intended Use
 **Intended Use Cases** Code Llama and its variants is intended for commercial and research use in English and relevant programming languages. The base model Code Llama can be adapted for a variety of code synthesis and understanding tasks, Code Llama - Python is designed specifically to handle the Python programming language, and Code Llama - Instruct is intended to be safer to use for code assistant and generation applications.
