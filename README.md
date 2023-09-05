@@ -171,7 +171,7 @@ CT_METAL=1 pip install ctransformers>=0.2.24 --no-binary ctransformers
 from ctransformers import AutoModelForCausalLM
 
 # Set gpu_layers to the number of layers to offload to GPU. Set to 0 if no GPU acceleration is available on your system.
-llm = AutoModelForCausalLM.from_pretrained("TheBloke/CodeLlama-13B-Instruct-GGML", model_file="codellama-13b-instruct.q4_K_M.gguf", model_type="llama", gpu_layers=50)
+llm = AutoModelForCausalLM.from_pretrained("TheBloke/CodeLlama-13B-Instruct-GGUF", model_file="codellama-13b-instruct.q4_K_M.gguf", model_type="llama", gpu_layers=50)
 
 print(llm("AI is going to"))
 ```
