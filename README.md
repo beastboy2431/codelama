@@ -47,13 +47,13 @@ The key benefit of GGUF is that it is a extensible, future-proof format which st
 
 Here are a list of clients and libraries that are known to support GGUF:
 * [llama.cpp](https://github.com/ggerganov/llama.cpp).
-* [text-generation-webui](https://github.com/oobabooga/text-generation-webui), the most widely used web UI. Supports GGUF with GPU acceleration via the ctransformers backend - llama-cpp-python backend should work soon too.
-* [KoboldCpp](https://github.com/LostRuins/koboldcpp), now supports GGUF as of release 1.41! A powerful GGML web UI, with full GPU accel. Especially good for story telling.
-* [LM Studio](https://lmstudio.ai/), version 0.2.2 and later support GGUF. A fully featured local GUI with GPU acceleration on both Windows (NVidia and AMD), and macOS.
-* [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), should now work, choose the `c_transformers` backend. A great web UI with many interesting features. Supports CUDA GPU acceleration.
-* [ctransformers](https://github.com/marella/ctransformers), now supports GGUF as of version 0.2.24! A Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
-* [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), supports GGUF as of version 0.1.79. A Python library with GPU accel, LangChain support, and OpenAI-compatible API server.
-* [candle](https://github.com/huggingface/candle), added GGUF support on August 22nd. Candle is a Rust ML framework with a focus on performance, including GPU support, and ease of use.
+* [text-generation-webui](https://github.com/oobabooga/text-generation-webui), the most widely used web UI, with many features and powerful extensions.
+* [KoboldCpp](https://github.com/LostRuins/koboldcpp), a fully featured web UI, with full GPU accel across multiple platforms and GPU architectures. Especially good for story telling.
+* [LM Studio](https://lmstudio.ai/), an easy-to-use and powerful local GUI with GPU acceleration on both Windows (NVidia and AMD), and macOS.
+* [LoLLMS Web UI](https://github.com/ParisNeo/lollms-webui), a great web UI with many interesting and unique features, including a full model library for easy model selection.
+* [ctransformers](https://github.com/marella/ctransformers), a Python library with GPU accel, LangChain support, and OpenAI-compatible AI server.
+* [llama-cpp-python](https://github.com/abetlen/llama-cpp-python), a Python library with GPU accel, LangChain support, and OpenAI-compatible API server.
+* [candle](https://github.com/huggingface/candle), a Rust ML framework with a focus on performance, including GPU support, and ease of use.
 
 <!-- README_GGUF.md-about-gguf end -->
 <!-- repositories-available start -->
@@ -130,7 +130,7 @@ Make sure you are using `llama.cpp` from commit [6381d4e110bd0ec02843a60bbeb8b6f
 For compatibility with older versions of llama.cpp, or for any third-party libraries or clients that haven't yet updated for GGUF, please use GGML files instead.
 
 ```
-./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 4096 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "[INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:\nWrite a story about llamas\n[/INST]"
+./main -t 10 -ngl 32 -m codellama-13b-instruct.q4_K_M.gguf --color -c 4096 --temp 0.7 --repeat_penalty 1.1 -n -1 -p "[INST] Write code to solve the following coding problem that obeys the constraints and passes the example test cases. Please wrap your code answer using ```:\n{prompt}\n[/INST]"
 ```
 Change `-t 10` to the number of physical CPU cores you have. For example if your system has 8 cores/16 threads, use `-t 8`. If offloading all layers to GPU, set `-t 1`.
 
