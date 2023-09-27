@@ -1,11 +1,13 @@
 ---
-base_model: https://huggingface.co/codellama/CodeLlama-13b-Instruct-hf
-inference: false
 language:
 - code
 license: llama2
-model_creator: Meta
+tags:
+- llama-2
 model_name: CodeLlama 13B Instruct
+base_model: codellama/CodeLlama-13b-Instruct-hf
+inference: false
+model_creator: Meta
 model_type: llama
 pipeline_tag: text-generation
 prompt_template: '[INST] Write code to solve the following coding problem that obeys
@@ -18,8 +20,6 @@ prompt_template: '[INST] Write code to solve the following coding problem that o
 
   '
 quantized_by: TheBloke
-tags:
-- llama-2
 ---
 
 <!-- header start -->
